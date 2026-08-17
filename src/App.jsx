@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import mqtt from 'mqtt';
-import { Droplets, AlertTriangle, Settings, X } from 'lucide-react';
+import { Droplets, Settings, X } from 'lucide-react';
 import './App.css';
 
 const BROKER_URL = 'wss://broker.hivemq.com:8884/mqtt';
@@ -208,15 +208,13 @@ function TankCard({ name, level, onClick }) {
 
   return (
     <div 
-      className="tank-card clickable" 
-      onClick={onClick}
+      className="tank-card" 
       style={{ '--tank-color-top': colorTop, '--tank-color-bottom': colorBottom }}
     >
       <div className="tank-info-top">
         <h2>{name}</h2>
         <div className="header-icons">
-          {clampedLevel <= 20 && <AlertTriangle className="icon-warning" size={16} />}
-          <Settings className="icon-settings" size={16} />
+          <Settings className="icon-settings clickable" size={16} onClick={onClick} />
         </div>
       </div>
       
